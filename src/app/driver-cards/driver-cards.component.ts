@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Driver } from '../models/driver';
 
 @Component({
   selector: 'driver-cards',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./driver-cards.component.scss']
 })
 export class DriverCardsComponent implements OnInit {
+
+  @Input()
+  drivers: Array<Driver>;
 
   constructor() { }
 
