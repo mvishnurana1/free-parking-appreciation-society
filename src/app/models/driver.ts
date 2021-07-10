@@ -1,8 +1,8 @@
-import { carPark } from "./carPark";
+import { carPark } from "./car-park";
 
 export class Driver {
   firstName: String;
-  lastName?: String;
+  time?: Date;
   carParkType: carPark;
   location?: String;
 }
