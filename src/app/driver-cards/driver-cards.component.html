@@ -1,34 +1,12 @@
-<div>
-  <mat-card class="card">
-    <div class="card-header">
-      <h1 class="driver-name">Chris Chua</h1>
-      <h1 class="car-park-type">3P</h1>
-    </div>
-    <mat-card-content>
-      <h2><strong>Lords gym</strong></h2>
-      <h2>Time Left: <strong>-90:34 minutes</strong></h2>
-    </mat-card-content>
-  </mat-card>
-
-  <mat-card class="card">
-    <div class="card-header">
-      <h1 class="driver-name">Gemma Hutchson</h1>
-      <h1 class="car-park-type">3P</h1>
-    </div>
-    <mat-card-content>
-      <h2><strong>Lords gym</strong></h2>
-      <h2>Time Left: <strong>-90:34 minutes</strong></h2>
-    </mat-card-content>
-  </mat-card>
-
-  <mat-card class="ticket_card">
-    <div class="card-header">
-      <h1 class="driver-name">Kevin Mario</h1>
-      <h1 class="car-park-type">3P</h1>
-    </div>
-    <mat-card-content>
-      <h2><strong>Lords gym</strong></h2>
-      <h2>Time Left: <strong>-10:34 minutes</strong></h2>
-    </mat-card-content>
-  </mat-card>
-</div>
+<mat-card *ngFor="let driver of drivers" class="card">
+  <div class="card-header">
+    <h1 class="driver-name">{{ driver.firstName }}</h1>
+    <h1 class="car-park-type">{{ driver.carParkType }}</h1>
+  </div>
+  <mat-card-content>
+    <h2>
+      <strong>{{ driver?.location }}</strong>
+    </h2>
+    <h2>Time Left: <strong>-90:34 minutes</strong></h2>
+  </mat-card-content>
+</mat-card>

@@ -1,4 +1,21 @@
+.app {
+  display: flex;
+  justify-content: space-around;
+  margin: 1rem;
+}
+
 .form-fields {
   display: flex;
   flex-direction: column;
+}
+
+.form-component {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 30%;
+}
+
+.driver-portal {
+  width: 60%;
 }
