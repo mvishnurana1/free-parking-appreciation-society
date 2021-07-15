@@ -15,5 +15,4 @@ export class DriverCardsComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

@@ -7,6 +7,8 @@
     <h2>
       <strong>{{ driver?.location }}</strong>
     </h2>
-    <h2>Time Left: <strong>-90:34 minutes</strong></h2>
+    <div class="timer">
+      <card-timer [time]="driver.time" [carParkType]="driver.carParkType"></card-timer>
+    </div>
   </mat-card-content>
 </mat-card>

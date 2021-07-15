@@ -11,13 +11,15 @@ import { MatInputModule } from '@angular/material/input';
 import { DriverCardsComponent } from './driver-cards/driver-cards.component';
 import {MatCardModule} from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
+import { CardTimerComponent } from './card-timer/card-timer.component';
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     FormInputComponent,
-    DriverCardsComponent
-  ],
+    DriverCardsComponent,
+      CardTimerComponent
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
