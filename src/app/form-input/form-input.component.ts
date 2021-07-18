@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { carPark } from '../models/car-park';
 import { Driver } from '../models/driver';
 
 @Component({
@@ -9,10 +8,13 @@ import { Driver } from '../models/driver';
 })
 export class FormInputComponent implements OnInit {
   drivers: Array<Driver> = [];
+  hours = [];
+  minutes = [];
 
   driver: Driver = {
     firstName: Driver.prototype.firstName,
-    time: Driver.prototype.time,
+    hour: Driver.prototype.hour,
+    minute: Driver.prototype.minute,
     carParkType: Driver.prototype.carParkType,
     location: Driver.prototype.location
   }
@@ -20,6 +22,14 @@ export class FormInputComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.populateHoursAndMinutes();
+  }
+
+  populateHoursAndMinutes(): void {
+    const hour = new Date().getHours();
+
+    this.hours.push(hour, hour - 1, hour - 2);
+    this.minutes.push(0, 15, 30, 45);
   }
 
   incrementDriverList(): void {
@@ -39,7 +49,8 @@ export class FormInputComponent implements OnInit {
     this.driver = {
       firstName: '',
       carParkType: null,
-      time: null,
+      hour: null,
+      minute: null,
       location: ''
     }
   }
