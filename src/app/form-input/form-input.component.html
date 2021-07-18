@@ -29,7 +29,6 @@
             [(ngModel)]="driver.hour"
             [ngModelOptions]="{ standalone: true }"
             matNativeControl
-            required
           >
             <mat-option *ngFor="let hour of hours" [value]="hour">
               {{ hour }}
@@ -43,7 +42,6 @@
             [(ngModel)]="driver.minute"
             [ngModelOptions]="{ standalone: true }"
             matNativeControl
-            required
           >
             <mat-option *ngFor="let minute of minutes" [value]="minute">
               {{ minute }}
