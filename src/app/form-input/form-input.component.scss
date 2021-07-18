@@ -19,3 +19,16 @@
 .driver-portal {
   width: 60%;
 }
+
+.time-selector {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media only screen and (max-width: 1024px) {
+  .time-selector {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}

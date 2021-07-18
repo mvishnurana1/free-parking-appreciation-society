@@ -21,15 +21,28 @@
         />
       </mat-form-field>
 
-      <mat-form-field>
-        <mat-label>Time when Parked</mat-label>
-        <input
-          matInput
-          placeholder="08:30 AM"
-          [(ngModel)]="driver.time"
-          name="time"
-        />
-      </mat-form-field>
+      <mat-label>Time when Parked</mat-label>
+      <div class="time-selector">
+        <mat-form-field appearance="fill">
+          <mat-label>Hour</mat-label>
+          <select matNativeControl required>
+            <option>07</option>
+            <option>08</option>
+            <option>09</option>
+            <option>10</option>
+          </select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Minutes</mat-label>
+          <select matNativeControl required>
+            <option>00</option>
+            <option>15</option>
+            <option>30</option>
+            <option>45</option>
+          </select>
+        </mat-form-field>
+      </div>
 
       <mat-form-field>
         <mat-label>Location</mat-label>
