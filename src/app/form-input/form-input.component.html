@@ -1,6 +1,6 @@
 <div class="form-driver-cards-container">
   <div class="form-component">
-    <form (submit)="onSubmit($event)" class="form-fields">
+    <form class="form-fields">
       <mat-form-field>
         <mat-label>Name</mat-label>
         <input
@@ -25,22 +25,30 @@
       <div class="time-selector">
         <mat-form-field appearance="fill">
           <mat-label>Hour</mat-label>
-          <select matNativeControl required>
-            <option>07</option>
-            <option>08</option>
-            <option>09</option>
-            <option>10</option>
-          </select>
+          <mat-select
+            [(ngModel)]="driver.hour"
+            [ngModelOptions]="{ standalone: true }"
+            matNativeControl
+            required
+          >
+            <mat-option *ngFor="let hour of hours" [value]="hour">
+              {{ hour }}
+            </mat-option>
+          </mat-select>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
           <mat-label>Minutes</mat-label>
-          <select matNativeControl required>
-            <option>00</option>
-            <option>15</option>
-            <option>30</option>
-            <option>45</option>
-          </select>
+          <mat-select
+            [(ngModel)]="driver.minute"
+            [ngModelOptions]="{ standalone: true }"
+            matNativeControl
+            required
+          >
+            <mat-option *ngFor="let minute of minutes" [value]="minute">
+              {{ minute }}
+            </mat-option>
+          </mat-select>
         </mat-form-field>
       </div>
 

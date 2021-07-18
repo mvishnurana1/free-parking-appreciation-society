@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { MatSelectModule } from '@angular/material/select';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormInputComponent } from './form-input/form-input.component';
@@ -28,7 +28,8 @@ import { CardTimerComponent } from './card-timer/card-timer.component';
     MatInputModule,
     MatButtonModule,
     MatCardModule,
-    FormsModule
+    FormsModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
