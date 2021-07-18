@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import  { data }  from './../fake-data/fake-data';
 import { Driver } from '../models/driver';
 
 @Component({
@@ -7,7 +8,7 @@ import { Driver } from '../models/driver';
   styleUrls: ['./form-input.component.scss']
 })
 export class FormInputComponent implements OnInit {
-  drivers: Array<Driver> = [];
+  drivers: Array<Driver> = data;
   hours = [];
   minutes = [];
 
