@@ -14,11 +14,11 @@ import { FormsModule } from '@angular/forms';
 import { CardTimerComponent } from './card-timer/card-timer.component';
 
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
     FormInputComponent,
     DriverCardsComponent,
-      CardTimerComponent
+    CardTimerComponent
    ],
   imports: [
     BrowserModule,
