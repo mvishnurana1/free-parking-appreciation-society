@@ -24,7 +24,7 @@ export class FormInputComponent implements OnInit {
 
   incrementDriverList(): void {
     console.log(this.driver);
-    this.drivers.push(this.driver);
+    this.drivers.unshift(this.driver);
 
     console.log(this.drivers);
 
