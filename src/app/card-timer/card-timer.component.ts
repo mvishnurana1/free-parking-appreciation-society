@@ -13,7 +13,10 @@ export class CardTimerComponent implements OnInit {
   driver: Driver;
 
   timer: number;
-  remainingTime: number;
+  completedMinutes: number = 0;
+  completedHours: number = 0;
+  remainingHour: number;
+  remainingMinutes: number;
   time: number;
 
   getTimeDifference(): number {
@@ -45,17 +48,34 @@ export class CardTimerComponent implements OnInit {
     }
   }
 
+  timeConvert(remainingTime: number): void {
+    const hours = (remainingTime / 60);
+    this.remainingHour = Math.floor(hours);
+    const minutes = (hours - this.remainingHour) * 60;
+    this.remainingMinutes = Math.round(minutes);
+  }
+
   newTimer(): void {
     const difference = this.getTimeDifference();
     const total = this.totalTime();
 
     if (total !== -1) {
-      this.remainingTime = total - difference;
+      const remainingTime = total - difference;
+      this.timeConvert(remainingTime);
 
       const source = interval(1000);
 
-      const subscribe = source.subscribe({
+      source.subscribe({
         next: (val) => {
+          if ((val > 0) && (val % 60 === 0)) {
+            this.completedMinutes = this.completedMinutes + 1;
+            this.remainingMinutes = this.remainingMinutes - 1;
+
+            if ((this.completedMinutes >= 60) && (this.completedMinutes % 60 === 0)) {
+              this.completedHours = this.completedHours + 1;
+              this.remainingHour = this.remainingHour - 1;
+            }
+          }
           this.time = val;
         }
       })
