@@ -3,33 +3,26 @@
     <form class="form-fields">
       <mat-form-field>
         <mat-label>Name</mat-label>
-        <input
-          matInput
-          placeholder="your name"
-          [(ngModel)]="driver.firstName"
-          name="firstName"
-        />
+        <input matInput placeholder="your name" [(ngModel)]="driver.firstName" name="firstName" />
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Parking Type (2P/3P)</mat-label>
-        <input
-          matInput
-          placeholder="2P/3P"
-          [(ngModel)]="driver.carParkType"
-          name="carParkType"
-        />
+        <mat-select [(ngModel)]="driver.carParkType" name="carParkType">
+          <mat-option value="P">P</mat-option>
+          <mat-option value="1P">1P</mat-option>
+          <mat-option value="2P">2P</mat-option>
+          <mat-option value="3P">3P</mat-option>
+          <mat-option value="4P">4P</mat-option>
+          <mat-option value="5P">5P</mat-option>
+        </mat-select>
       </mat-form-field>
 
       <mat-label>Time when Parked</mat-label>
       <div class="time-selector">
         <mat-form-field appearance="fill">
           <mat-label>Hour</mat-label>
-          <mat-select
-            [(ngModel)]="driver.hour"
-            [ngModelOptions]="{ standalone: true }"
-            matNativeControl
-          >
+          <mat-select [(ngModel)]="driver.hour" name="hour">
             <mat-option *ngFor="let hour of hours" [value]="hour">
               {{ hour }}
             </mat-option>
@@ -38,11 +31,7 @@
 
         <mat-form-field appearance="fill">
           <mat-label>Minutes</mat-label>
-          <mat-select
-            [(ngModel)]="driver.minute"
-            [ngModelOptions]="{ standalone: true }"
-            matNativeControl
-          >
+          <mat-select [(ngModel)]="driver.minute" name="minute">
             <mat-option *ngFor="let minute of minutes" [value]="minute">
               {{ minute }}
             </mat-option>
@@ -52,20 +41,10 @@
 
       <mat-form-field>
         <mat-label>Location</mat-label>
-        <input
-          matInput
-          placeholder="Lord's gym"
-          [(ngModel)]="driver.location"
-          name="location"
-        />
+        <input matInput placeholder="Lord's gym" [(ngModel)]="driver.location" name="location" />
       </mat-form-field>
 
-      <button
-        type="button"
-        mat-raised-button
-        color="primary"
-        (click)="incrementDriverList()"
-      >
+      <button type="button" mat-raised-button color="primary" (click)="incrementDriverList()">
         Submit
       </button>
     </form>
