@@ -29,7 +29,7 @@ import { CardTimerComponent } from './card-timer/card-timer.component';
     MatButtonModule,
     MatCardModule,
     FormsModule,
-    MatSelectModule
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
