@@ -51,6 +51,7 @@ export class CardTimerComponent implements OnInit {
   timeConvert(remainingTime: number): void {
     const hours = (remainingTime / 60);
     this.remainingHour = Math.floor(hours);
+
     const minutes = (hours - this.remainingHour) * 60;
     this.remainingMinutes = Math.round(minutes);
   }
