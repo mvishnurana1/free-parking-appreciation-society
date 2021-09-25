@@ -9,8 +9,8 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { DriverCardsComponent } from './driver-cards/driver-cards.component';
-import {MatCardModule} from '@angular/material/card';
-import { FormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
+import { ReactiveFormsModule } from '@angular/forms';
 import { CardTimerComponent } from './card-timer/card-timer.component';
 
 @NgModule({
@@ -28,7 +28,7 @@ import { CardTimerComponent } from './card-timer/card-timer.component';
     MatInputModule,
     MatButtonModule,
     MatCardModule,
-    FormsModule,
+    ReactiveFormsModule,
     MatSelectModule,
   ],
   providers: [],
