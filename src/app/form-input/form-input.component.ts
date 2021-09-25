@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import  { data }  from './../fake-data/fake-data';
 import { Driver } from '../models/driver';
 
@@ -12,18 +13,20 @@ export class FormInputComponent implements OnInit {
   hours = [];
   minutes = [];
 
-  driver: Driver = {
-    firstName: Driver.prototype.firstName,
-    hour: Driver.prototype.hour,
-    minute: Driver.prototype.minute,
-    carParkType: Driver.prototype.carParkType,
-    location: Driver.prototype.location
-  }
+  driverForm: FormGroup;
 
-  constructor() { }
+  constructor(
+    private fb: FormBuilder
+  ) { }
 
   ngOnInit(): void {
     this.populateHoursAndMinutes();
+
+    this.driverForm = this.fb.group({
+      name: [null, Validators.required],
+      carParkType: [null, Validators.required],
+      location: [null, Validators.required],
+    });
   }
 
   populateHoursAndMinutes(): void {
@@ -34,11 +37,6 @@ export class FormInputComponent implements OnInit {
   }
 
   incrementDriverList(): void {
-    console.log(this.driver);
-    this.drivers.unshift(this.driver);
-
-    console.log(this.drivers);
-
     this.clearForm();
   }
 
@@ -47,12 +45,5 @@ export class FormInputComponent implements OnInit {
   }
 
   clearForm(): void {
-    this.driver = {
-      firstName: '',
-      carParkType: null,
-      hour: null,
-      minute: null,
-      location: ''
-    }
   }
 }

@@ -1,14 +1,19 @@
 <div class="form-driver-cards-container">
   <div class="form-component">
-    <form class="form-fields">
+    <form
+      class="form-fields"
+      (ngSubmit)="incrementDriverList()"
+      [formGroup]="driverForm"
+      novalidate
+    >
       <mat-form-field>
         <mat-label>Name</mat-label>
-        <input matInput placeholder="your name" [(ngModel)]="driver.firstName" name="firstName" />
+        <input matInput placeholder="your name" formControlName="name" />
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Parking Type (2P/3P)</mat-label>
-        <mat-select [(ngModel)]="driver.carParkType" name="carParkType">
+        <mat-select formControlName="carParkType">
           <mat-option value="P">P</mat-option>
           <mat-option value="1P">1P</mat-option>
           <mat-option value="2P">2P</mat-option>
@@ -19,10 +24,10 @@
       </mat-form-field>
 
       <mat-label>Time when Parked</mat-label>
-      <div class="time-selector">
+      <!-- <div class="time-selector">
         <mat-form-field appearance="fill">
           <mat-label>Hour</mat-label>
-          <mat-select [(ngModel)]="driver.hour" name="hour">
+          <mat-select [(ngModel)]="hour">
             <mat-option *ngFor="let hour of hours" [value]="hour">
               {{ hour }}
             </mat-option>
@@ -31,20 +36,34 @@
 
         <mat-form-field appearance="fill">
           <mat-label>Minutes</mat-label>
-          <mat-select [(ngModel)]="driver.minute" name="minute">
+          <mat-select [(ngModel)]="driver.minute">
             <mat-option *ngFor="let minute of minutes" [value]="minute">
               {{ minute }}
             </mat-option>
           </mat-select>
         </mat-form-field>
-      </div>
+      </div> -->
 
       <mat-form-field>
         <mat-label>Location</mat-label>
-        <input matInput placeholder="Lord's gym" [(ngModel)]="driver.location" name="location" />
+        <input matInput placeholder="Lord's gym" formControlName="location" />
       </mat-form-field>
 
-      <button type="button" mat-raised-button color="primary" (click)="incrementDriverList()">
+      <button
+        type="submit"
+        mat-raised-button
+        color="primary"
+        [title]="
+          driverForm.get('name').value === null ||
+          driverForm.get('carParkType').value === null
+            ? 'Please fill out all the required fields'
+            : 'Please submit to see your card'
+        "
+        [disabled]="
+          driverForm.get('name').value === null ||
+          driverForm.get('carParkType').value === null
+        "
+      >
         Submit
       </button>
     </form>
