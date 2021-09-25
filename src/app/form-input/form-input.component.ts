@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -15,11 +16,15 @@ export class FormInputComponent implements OnInit {
     location: [null, Validators.required],
   });
 
+  today: string;
+
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private datePipe: DatePipe
   ) { }
 
   ngOnInit(): void {
+    this.today = this.datePipe.transform(new Date(Date.now()), 'h:mm a')
   }
 
   incrementDriverList(): void {

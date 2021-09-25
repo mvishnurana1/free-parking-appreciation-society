@@ -13,6 +13,7 @@ import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CardTimerComponent } from './card-timer/card-timer.component';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,9 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
     MatSelectModule,
     NgxMaterialTimepickerModule
   ],
-  providers: [],
+  providers: [
+    DatePipe,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
