@@ -1,47 +1,47 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import  { data }  from './../fake-data/fake-data';
-import { Driver } from '../models/driver';
+import { tap } from 'rxjs/operators';
+import { subHours } from 'date-fns';
+import { DateService } from 'src/services/date-service.service';
 
 @Component({
   selector: 'form-input',
   templateUrl: './form-input.component.html',
-  styleUrls: ['./form-input.component.scss']
+  styleUrls: ['./form-input.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FormInputComponent implements OnInit {
-  drivers: Array<Driver> = data;
-  hours = [];
-  minutes = [];
+  currentTime: string;
+  minimumTime: string;
 
-  driverForm: FormGroup;
+  driverForm: FormGroup = this.fb.group({
+    name: [null, Validators.required],
+    carParkType: [null, Validators.required],
+    parkedTime: [null, Validators.required],
+    location: [null, Validators.required],
+  });
 
   constructor(
-    private fb: FormBuilder
+    private readonly fb: FormBuilder,
+    private readonly dateService: DateService,
   ) { }
 
   ngOnInit(): void {
-    this.populateHoursAndMinutes();
+    this.currentTime = this.dateService.transFormShort(new Date(Date.now()));
 
-    this.driverForm = this.fb.group({
-      name: [null, Validators.required],
-      carParkType: [null, Validators.required],
-      location: [null, Validators.required],
-    });
-  }
-
-  populateHoursAndMinutes(): void {
-    const hour = new Date().getHours();
-
-    this.hours.push(hour, hour - 1, hour - 2);
-    this.minutes.push(0, 15, 30, 45);
+    this.driverForm.get('carParkType').valueChanges
+    .pipe(
+      tap((latestCarParkTypeValue) => {
+        if (latestCarParkTypeValue) {
+          this.minimumTime = this.dateService.transFormShort(subHours(new Date(Date.now()), latestCarParkTypeValue[0]));
+        }
+      })
+    )
+    .subscribe();
   }
 
   incrementDriverList(): void {
     this.clearForm();
-  }
-
-  onSubmit(e: Event): void {
-    e.preventDefault();
   }
 
   clearForm(): void {
