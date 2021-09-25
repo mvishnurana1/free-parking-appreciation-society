@@ -14,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CardTimerComponent } from './card-timer/card-timer.component';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { DatePipe } from '@angular/common';
+import { DateService } from 'src/services/date-service.service';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { DatePipe } from '@angular/common';
   ],
   providers: [
     DatePipe,
+    DateService,
   ],
   bootstrap: [AppComponent]
 })

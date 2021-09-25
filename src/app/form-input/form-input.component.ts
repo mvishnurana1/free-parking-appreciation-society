@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { DatePipe } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { tap } from 'rxjs/operators';
 import { subHours } from 'date-fns';
+import { DateService } from 'src/services/date-service.service';
 
 @Component({
   selector: 'form-input',
@@ -23,17 +23,17 @@ export class FormInputComponent implements OnInit {
 
   constructor(
     private readonly fb: FormBuilder,
-    private readonly datePipe: DatePipe
+    private readonly dateService: DateService,
   ) { }
 
   ngOnInit(): void {
-    this.currentTime = this.datePipe.transform(new Date(Date.now()), 'h:mm a');
+    this.currentTime = this.dateService.transFormShort(new Date(Date.now()));
 
     this.driverForm.get('carParkType').valueChanges
     .pipe(
       tap((latestCarParkTypeValue) => {
         if (latestCarParkTypeValue) {
-          this.minimumTime = this.datePipe.transform(subHours(new Date(Date.now()), latestCarParkTypeValue[0]), 'h:mm a');
+          this.minimumTime = this.dateService.transFormShort(subHours(new Date(Date.now()), latestCarParkTypeValue[0]));
         }
       })
     )
