@@ -23,11 +23,12 @@
           matInput
           placeholder="Time when Parked"
           formControlName="parkedTime"
+          [min]="minimumTime"
+          [max]="currentTime"
           [ngxTimepicker]="picker"
         />
         <ngx-material-timepicker
-          [format]="24"
-          [defaultTime]="today"
+          [defaultTime]="currentTime"
           [preventOverlayClick]="true"
           #picker
         ></ngx-material-timepicker>

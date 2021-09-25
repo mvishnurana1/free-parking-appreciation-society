@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { tap } from 'rxjs/operators';
+import { subHours } from 'date-fns';
 
 @Component({
   selector: 'form-input',
@@ -9,6 +11,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FormInputComponent implements OnInit {
+  currentTime: string;
+  minimumTime: string;
+
   driverForm: FormGroup = this.fb.group({
     name: [null, Validators.required],
     carParkType: [null, Validators.required],
@@ -16,15 +21,23 @@ export class FormInputComponent implements OnInit {
     location: [null, Validators.required],
   });
 
-  today: string;
-
   constructor(
-    private fb: FormBuilder,
-    private datePipe: DatePipe
+    private readonly fb: FormBuilder,
+    private readonly datePipe: DatePipe
   ) { }
 
   ngOnInit(): void {
-    this.today = this.datePipe.transform(new Date(Date.now()), 'h:mm a')
+    this.currentTime = this.datePipe.transform(new Date(Date.now()), 'h:mm a');
+
+    this.driverForm.get('carParkType').valueChanges
+    .pipe(
+      tap((latestCarParkTypeValue) => {
+        if (latestCarParkTypeValue) {
+          this.minimumTime = this.datePipe.transform(subHours(new Date(Date.now()), latestCarParkTypeValue[0]), 'h:mm a');
+        }
+      })
+    )
+    .subscribe();
   }
 
   incrementDriverList(): void {
