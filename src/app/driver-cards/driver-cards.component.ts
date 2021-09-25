@@ -1,18 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Driver } from '../models/driver';
+import  { data }  from './../fake-data/fake-data';
 
 @Component({
   selector: 'driver-cards',
   templateUrl: './driver-cards.component.html',
-  styleUrls: ['./driver-cards.component.scss']
+  styleUrls: ['./driver-cards.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DriverCardsComponent implements OnInit {
-
-  @Input()
-  drivers: Array<Driver>;
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+export class DriverCardsComponent {
+  drivers: Array<Driver> = data;
 }

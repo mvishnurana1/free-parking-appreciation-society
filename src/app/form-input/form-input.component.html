@@ -1,11 +1,6 @@
 <div class="form-driver-cards-container">
   <div class="form-component">
-    <form
-      class="form-fields"
-      (ngSubmit)="incrementDriverList()"
-      [formGroup]="driverForm"
-      novalidate
-    >
+    <form class="form-fields" [formGroup]="driverForm" novalidate>
       <mat-form-field>
         <mat-label>Name</mat-label>
         <input matInput placeholder="your name" formControlName="name" />
@@ -23,26 +18,21 @@
         </mat-select>
       </mat-form-field>
 
-      <mat-label>Time when Parked</mat-label>
-      <!-- <div class="time-selector">
-        <mat-form-field appearance="fill">
-          <mat-label>Hour</mat-label>
-          <mat-select [(ngModel)]="hour">
-            <mat-option *ngFor="let hour of hours" [value]="hour">
-              {{ hour }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-
-        <mat-form-field appearance="fill">
-          <mat-label>Minutes</mat-label>
-          <mat-select [(ngModel)]="driver.minute">
-            <mat-option *ngFor="let minute of minutes" [value]="minute">
-              {{ minute }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div> -->
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="Time when Parked"
+          formControlName="parkedTime"
+          [ngxTimepicker]="picker"
+        />
+        <ngx-material-timepicker
+          [format]="24"
+          [minutesGap]="15"
+          [defaultTime]="'04:45 PM'"
+          [preventOverlayClick]="true"
+          #picker
+        ></ngx-material-timepicker>
+      </mat-form-field>
 
       <mat-form-field>
         <mat-label>Location</mat-label>
@@ -69,6 +59,6 @@
     </form>
   </div>
   <div class="driver-portal">
-    <driver-cards [drivers]="drivers"> </driver-cards>
+    <driver-cards></driver-cards>
   </div>
 </div>

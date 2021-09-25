@@ -12,6 +12,7 @@ import { DriverCardsComponent } from './driver-cards/driver-cards.component';
 import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CardTimerComponent } from './card-timer/card-timer.component';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { CardTimerComponent } from './card-timer/card-timer.component';
     MatCardModule,
     ReactiveFormsModule,
     MatSelectModule,
+    NgxMaterialTimepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
