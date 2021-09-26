@@ -1,29 +1,25 @@
 export const data = [
   {
     firstName: 'John Doe',
-    hour: 21,
-    minute: 15,
+    timeParked: '09:45 P.M',
     carParkType: '3P',
     location: 'Lord\'s Gym'
   },
   {
     firstName: 'Mike Dixon',
-    hour: 20,
-    minute: 30,
+    timeParked: '11:30 P.M',
     carParkType: '3P',
     location: 'Lord\'s Gym'
   },
   {
     firstName: 'Harvey Milk',
-    hour: 19,
-    minute: 15,
+    timeParked: '11:45 P.M',
     carParkType: '3P',
     location: 'Lord\'s Gym'
   },
   {
     firstName: 'SomeOne with a really long name',
-    hour: 21,
-    minute: 45,
+    timeParked: '12:00 A.M',
     carParkType: '3P',
     location: 'Lord\'s Gym'
   }

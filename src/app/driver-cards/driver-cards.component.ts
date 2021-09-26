@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { DriverService } from 'src/services/driver.service';
 import { Driver } from '../models/driver';
-import  { data }  from './../fake-data/fake-data';
 
 @Component({
   selector: 'driver-cards',
@@ -9,5 +9,9 @@ import  { data }  from './../fake-data/fake-data';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DriverCardsComponent {
-  drivers: Array<Driver> = data;
+  drivers: Array<Driver> = this.driverService.drivers;
+
+  constructor(
+    private readonly driverService: DriverService,
+  ) {}
 }
