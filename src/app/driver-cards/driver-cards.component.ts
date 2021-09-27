@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { DriverService } from 'src/services/driver.service';
 import { Driver } from '../models/driver';
 
