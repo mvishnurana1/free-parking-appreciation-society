@@ -13,8 +13,6 @@
           <mat-option value="1P">1P</mat-option>
           <mat-option value="2P">2P</mat-option>
           <mat-option value="3P">3P</mat-option>
-          <mat-option value="4P">4P</mat-option>
-          <mat-option value="5P">5P</mat-option>
         </mat-select>
       </mat-form-field>
 
@@ -51,8 +49,10 @@
         "
         [disabled]="
           driverForm.get('name').value === null ||
-          driverForm.get('carParkType').value === null
+          driverForm.get('carParkType').value === null ||
+          driverForm.get('parkedTime').value === null
         "
+        (click)="incrementDriverList()"
       >
         Submit
       </button>

@@ -1,7 +1,7 @@
 export class Driver {
   firstName: string;
-  hour: number;
-  minute: number;
+  timeParked: Date;
   carParkType: string;
   location?: string;
+  minutesRemaining?: number;
 }

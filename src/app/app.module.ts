@@ -11,17 +11,17 @@ import { MatInputModule } from '@angular/material/input';
 import { DriverCardsComponent } from './driver-cards/driver-cards.component';
 import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CardTimerComponent } from './card-timer/card-timer.component';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { DatePipe } from '@angular/common';
-import { DateService } from 'src/services/date-service.service';
+import { DriverService } from 'src/services/driver.service';
+import { DateService } from 'src/services/date.service';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     FormInputComponent,
     DriverCardsComponent,
-    CardTimerComponent
    ],
   imports: [
     BrowserModule,
@@ -38,6 +38,7 @@ import { DateService } from 'src/services/date-service.service';
   providers: [
     DatePipe,
     DateService,
+    DriverService,
   ],
   bootstrap: [AppComponent]
 })

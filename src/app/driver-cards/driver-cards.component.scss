@@ -1,5 +1,5 @@
 .card {
-  width: 80%;
+  width: 70%;
   background-color: rgb(88, 168, 50);
   color: white;
   margin: 1rem;
@@ -15,4 +15,12 @@
   background-color: rgb(179, 5, 5);;
   color: white;
   margin: 1rem;
+}
+
+.small {
+  font-size: 12px;
+}
+
+.red {
+  background-color: red;
 }

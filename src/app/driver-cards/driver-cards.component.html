@@ -1,17 +1,22 @@
-<mat-card *ngFor="let driver of drivers" class="card">
+<mat-card
+  *ngFor="let driver of drivers"
+  class="card"
+  [ngClass]="{ red: getTimeRemainingForDriver(driver) <= 30 }"
+>
   <div class="card-flex">
     <h1 class="driver-name">{{ driver.firstName }}</h1>
     <h1 class="car-park-type">{{ driver.carParkType }}</h1>
   </div>
   <mat-card-content>
     <div class="card-flex">
-      <h2>
-        At <strong>{{ driver?.location }}</strong>
-      </h2>
-      <h2>
-        At about <strong>{{ driver.hour }}:{{ driver.minute }}</strong>
-      </h2>
+      <p>{{ driver?.location }}</p>
+      <i class="small">
+        {{ driver.timeParked | date: "shortTime" }}
+      </i>
     </div>
-    <card-timer [driver]="driver"></card-timer>
+    <div class="small">
+      Time remaining
+      {{ getTimeRemainingForDriver(driver) }}
+    </div>
   </mat-card-content>
 </mat-card>
