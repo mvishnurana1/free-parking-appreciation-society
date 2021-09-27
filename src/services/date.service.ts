@@ -17,8 +17,4 @@ export class DateService {
   timeDifferenceInMinutes(latestTime, olderDate) {
     return differenceInMinutes(latestTime, olderDate);
   }
-
-  calculateTimeRemaining(): void {
-
-  }
 }
