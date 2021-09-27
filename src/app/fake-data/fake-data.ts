@@ -1,13 +1,13 @@
 export const data = [
   {
     firstName: 'John Doe',
-    timeParked: new Date(2021, 8, 27, 17, 24),
+    timeParked: new Date(2021, 8, 27, 19, 24),
     carParkType: '2P',
     location: 'Lord\'s Gym'
   },
   {
     firstName: 'Mike Dixon',
-    timeParked: new Date(2021, 8, 27, 17, 30),
+    timeParked: new Date(2021, 8, 27, 18, 30),
     carParkType: '3P',
     location: 'Lord\'s Gym'
   },
@@ -19,7 +19,7 @@ export const data = [
   },
   {
     firstName: 'SomeOne with a really long name',
-    timeParked: new Date(2021, 8, 27, 16, 45),
+    timeParked: new Date(2021, 8, 27, 20, 0),
     carParkType: '3P',
     location: 'Lord\'s Gym'
   }
