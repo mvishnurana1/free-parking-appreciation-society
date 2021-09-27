@@ -19,6 +19,8 @@ export class DriverService {
     const carParkType = Number(driver.carParkType[0]);
     const parkedTill = addHours(driver.timeParked, carParkType);
 
-    return this.dateService.timeDifferenceInMinutes(parkedTill, new Date(Date.now()))
+    driver.minutesRemaining = this.dateService.timeDifferenceInMinutes(parkedTill, new Date(Date.now()));
+
+    return this.dateService.timeDifferenceInMinutes(parkedTill, new Date(Date.now()));
   }
 }
