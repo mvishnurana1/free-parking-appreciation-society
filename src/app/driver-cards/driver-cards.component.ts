@@ -6,7 +6,6 @@ import { Driver } from '../models/driver';
   selector: 'driver-cards',
   templateUrl: './driver-cards.component.html',
   styleUrls: ['./driver-cards.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DriverCardsComponent {
   drivers: Array<Driver> = this.driverService.drivers;
@@ -14,4 +13,8 @@ export class DriverCardsComponent {
   constructor(
     private readonly driverService: DriverService,
   ) {}
+
+  getTimeRemainingForDriver(driver: Driver): number {
+    return this.driverService.gettimeRemainingInMinutesForDriver(driver);
+  }
 }

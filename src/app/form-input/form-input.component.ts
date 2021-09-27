@@ -2,7 +2,8 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { tap } from 'rxjs/operators';
 import { subHours } from 'date-fns';
-import { DateService } from 'src/services/date-service.service';
+import { Driver } from '../models/driver';
+import { DateService } from 'src/services/date.service';
 
 @Component({
   selector: 'form-input',
@@ -13,6 +14,7 @@ import { DateService } from 'src/services/date-service.service';
 export class FormInputComponent implements OnInit {
   currentTime: string;
   minimumTime: string;
+  difference: Date;
 
   driverForm: FormGroup = this.fb.group({
     name: [null, Validators.required],

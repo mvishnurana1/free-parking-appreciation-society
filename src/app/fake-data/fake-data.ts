@@ -1,25 +1,25 @@
 export const data = [
   {
     firstName: 'John Doe',
-    timeParked: '09:45 P.M',
-    carParkType: '3P',
+    timeParked: new Date(2021, 8, 27, 16, 30),
+    carParkType: '2P',
     location: 'Lord\'s Gym'
   },
   {
     firstName: 'Mike Dixon',
-    timeParked: '11:30 P.M',
+    timeParked: new Date(2021, 8, 27, 15, 30),
     carParkType: '3P',
     location: 'Lord\'s Gym'
   },
   {
     firstName: 'Harvey Milk',
-    timeParked: '11:45 P.M',
+    timeParked: new Date(2021, 8, 27, 17, 30),
     carParkType: '3P',
     location: 'Lord\'s Gym'
   },
   {
     firstName: 'SomeOne with a really long name',
-    timeParked: '12:00 A.M',
+    timeParked: new Date(2021, 8, 27, 16, 45),
     carParkType: '3P',
     location: 'Lord\'s Gym'
   }

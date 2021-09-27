@@ -3,10 +3,16 @@
     <h1 class="driver-name">{{ driver.firstName }}</h1>
     <h1 class="car-park-type">{{ driver.carParkType }}</h1>
   </div>
-  <mat-card-content class="card-flex">
-    <p>{{ driver?.location }}</p>
-    <p>
-      {{ driver.timeParked }}
-    </p>
+  <mat-card-content>
+    <div class="card-flex">
+      <p>{{ driver?.location }}</p>
+      <i class="small">
+        {{ driver.timeParked | date: "shortTime" }}
+      </i>
+    </div>
+    <div class="small">
+      Time remaining
+      {{ getTimeRemainingForDriver(driver) }}
+    </div>
   </mat-card-content>
 </mat-card>
