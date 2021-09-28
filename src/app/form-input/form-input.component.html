@@ -1,5 +1,5 @@
 <div class="form-driver-cards-container">
-  <div class="form-component">
+  <div class="form-component" [ngClass]="{ noDriver: drivers.length === 0 }">
     <form class="form-fields" [formGroup]="driverForm" novalidate>
       <mat-form-field>
         <mat-label>Name</mat-label>
@@ -58,7 +58,9 @@
       </button>
     </form>
   </div>
-  <div class="driver-portal">
-    <driver-cards></driver-cards>
-  </div>
+  <ng-container *ngIf="drivers.length > 0">
+    <div class="driver-portal">
+      <driver-cards></driver-cards>
+    </div>
+  </ng-container>
 </div>

@@ -4,6 +4,7 @@ import { tap } from 'rxjs/operators';
 import { subHours } from 'date-fns';
 import { Driver } from '../models/driver';
 import { DateService } from 'src/services/date.service';
+import { DriverService } from 'src/services/driver.service';
 
 @Component({
   selector: 'form-input',
@@ -12,9 +13,9 @@ import { DateService } from 'src/services/date.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FormInputComponent implements OnInit {
+  drivers: Array<Driver> = this.driverService.drivers;
   currentTime: string;
   minimumTime: string;
-  difference: Date;
 
   driverForm: FormGroup = this.fb.group({
     name: [null, Validators.required],
@@ -26,6 +27,7 @@ export class FormInputComponent implements OnInit {
   constructor(
     private readonly fb: FormBuilder,
     private readonly dateService: DateService,
+    private readonly driverService: DriverService,
   ) { }
 
   ngOnInit(): void {
