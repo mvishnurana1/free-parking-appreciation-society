@@ -1,7 +1,7 @@
 <mat-card
   *ngFor="let driver of drivers | validDrivers"
   class="card"
-  [ngClass]="{ red: getTimeRemainingForDriver(driver) <= 30 }"
+  [ngClass]="{ red: (driver | remainingDriverMinutes) <= 30 }"
 >
   <ng-container *ngIf="drivers.length > 0">
     <div class="card-flex">

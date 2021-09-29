@@ -14,7 +14,7 @@ export class DateService {
     return this.datePipe.transform(date, 'h:mm a');
   }
 
-  timeDifferenceInMinutes(latestTime, olderDate) {
+  timeDifferenceInMinutes(latestTime, olderDate): number {
     return differenceInMinutes(latestTime, olderDate);
   }
 }
