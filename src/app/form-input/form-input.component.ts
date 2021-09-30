@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { map, tap } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 import { subHours } from 'date-fns';
 import { Driver } from '../models/driver';
 import { DateService } from 'src/services/date.service';
@@ -10,7 +10,7 @@ import { DriverService } from 'src/services/driver.service';
   selector: 'form-input',
   templateUrl: './form-input.component.html',
   styleUrls: ['./form-input.component.scss'],
-  // changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FormInputComponent implements OnInit {
   drivers$ = this.driverService.drivers$;
@@ -18,9 +18,9 @@ export class FormInputComponent implements OnInit {
   minimumTime: string;
 
   driverForm: FormGroup = this.fb.group({
-    name: [null, Validators.required],
+    firstName: [null, Validators.required],
     carParkType: [null, Validators.required],
-    parkedTime: [null, Validators.required],
+    timeParked: [null, Validators.required],
     location: [null, Validators.required],
   });
 
