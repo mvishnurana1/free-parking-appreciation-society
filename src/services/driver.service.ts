@@ -8,7 +8,8 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class DriverService {
-  drivers: BehaviorSubject<Array<Driver>> = new BehaviorSubject<Array<Driver>>([]);
+  private drivers: BehaviorSubject<Array<Driver>> = new BehaviorSubject<Array<Driver>>([]);
+  drivers$ = this.drivers.asObservable();
 
   constructor(
     private readonly dateService: DateService,

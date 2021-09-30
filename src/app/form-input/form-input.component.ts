@@ -13,7 +13,7 @@ import { DriverService } from 'src/services/driver.service';
   // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FormInputComponent implements OnInit {
-  drivers$ = this.driverService.drivers;
+  drivers$ = this.driverService.drivers$;
   currentTime: string;
   minimumTime: string;
 
@@ -42,12 +42,6 @@ export class FormInputComponent implements OnInit {
       })
     )
     .subscribe();
-
-    // this.driverService.drivers.pipe(
-    //   tap((newDriver) => {
-    //     this.drivers = [newDriver, ...this.drivers];
-    //   })
-    // )
   }
 
   incrementDriverList(): void {
