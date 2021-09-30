@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { subHours } from 'date-fns';
 import { Driver } from '../models/driver';
 import { DateService } from 'src/services/date.service';
@@ -10,10 +10,10 @@ import { DriverService } from 'src/services/driver.service';
   selector: 'form-input',
   templateUrl: './form-input.component.html',
   styleUrls: ['./form-input.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FormInputComponent implements OnInit {
-  drivers: Array<Driver> = this.driverService.drivers;
+  drivers$ = this.driverService.drivers;
   currentTime: string;
   minimumTime: string;
 
@@ -42,9 +42,18 @@ export class FormInputComponent implements OnInit {
       })
     )
     .subscribe();
+
+    // this.driverService.drivers.pipe(
+    //   tap((newDriver) => {
+    //     this.drivers = [newDriver, ...this.drivers];
+    //   })
+    // )
   }
 
   incrementDriverList(): void {
+    const driver: Driver = this.driverForm.value;
+
+    this.driverService.addDriver(driver);
     this.clearForm();
   }
 

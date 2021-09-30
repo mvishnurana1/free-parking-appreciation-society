@@ -1,69 +1,71 @@
-<div class="form-driver-cards-container">
-  <div
-    class="form-component"
-    [ngClass]="{ noDriver: (drivers | validDrivers).length === 0 }"
-  >
-    <form class="form-fields" [formGroup]="driverForm" novalidate>
-      <mat-form-field>
-        <mat-label>Name</mat-label>
-        <input matInput placeholder="your name" formControlName="name" />
-      </mat-form-field>
+<ng-container *ngIf="drivers$ | async as drivers">
+  <div class="form-driver-cards-container">
+    <div
+      class="form-component"
+      [ngClass]="{ noDriver: (drivers | validDrivers).length === 0 }"
+    >
+      <form class="form-fields" [formGroup]="driverForm" novalidate>
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="your name" formControlName="name" />
+        </mat-form-field>
 
-      <mat-form-field>
-        <mat-label>Parking Type (2P/3P)</mat-label>
-        <mat-select formControlName="carParkType">
-          <mat-option value="P">P</mat-option>
-          <mat-option value="1P">1P</mat-option>
-          <mat-option value="2P">2P</mat-option>
-          <mat-option value="3P">3P</mat-option>
-        </mat-select>
-      </mat-form-field>
+        <mat-form-field>
+          <mat-label>Parking Type (2P/3P)</mat-label>
+          <mat-select formControlName="carParkType">
+            <mat-option value="P">P</mat-option>
+            <mat-option value="1P">1P</mat-option>
+            <mat-option value="2P">2P</mat-option>
+            <mat-option value="3P">3P</mat-option>
+          </mat-select>
+        </mat-form-field>
 
-      <mat-form-field>
-        <input
-          matInput
-          placeholder="Time when Parked"
-          formControlName="parkedTime"
-          [min]="minimumTime"
-          [max]="currentTime"
-          [ngxTimepicker]="picker"
-        />
-        <ngx-material-timepicker
-          [defaultTime]="currentTime"
-          [preventOverlayClick]="true"
-          #picker
-        ></ngx-material-timepicker>
-      </mat-form-field>
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Time when Parked"
+            formControlName="parkedTime"
+            [min]="minimumTime"
+            [max]="currentTime"
+            [ngxTimepicker]="picker"
+          />
+          <ngx-material-timepicker
+            [defaultTime]="currentTime"
+            [preventOverlayClick]="true"
+            #picker
+          ></ngx-material-timepicker>
+        </mat-form-field>
 
-      <mat-form-field>
-        <mat-label>Location</mat-label>
-        <input matInput placeholder="Lord's gym" formControlName="location" />
-      </mat-form-field>
+        <mat-form-field>
+          <mat-label>Location</mat-label>
+          <input matInput placeholder="Lord's gym" formControlName="location" />
+        </mat-form-field>
 
-      <button
-        type="submit"
-        mat-raised-button
-        color="primary"
-        [title]="
-          driverForm.get('name').value === null ||
-          driverForm.get('carParkType').value === null
-            ? 'Please fill out all the required fields'
-            : 'Please submit to see your card'
-        "
-        [disabled]="
-          driverForm.get('name').value === null ||
-          driverForm.get('carParkType').value === null ||
-          driverForm.get('parkedTime').value === null
-        "
-        (click)="incrementDriverList()"
-      >
-        Submit
-      </button>
-    </form>
-  </div>
-  <ng-container *ngIf="(drivers | validDrivers).length > 0">
-    <div class="driver-portal">
-      <driver-cards></driver-cards>
+        <button
+          type="submit"
+          mat-raised-button
+          color="primary"
+          [title]="
+            driverForm.get('name').value === null ||
+            driverForm.get('carParkType').value === null
+              ? 'Please fill out all the required fields'
+              : 'Please submit to see your card'
+          "
+          [disabled]="
+            driverForm.get('name').value === null ||
+            driverForm.get('carParkType').value === null ||
+            driverForm.get('parkedTime').value === null
+          "
+          (click)="incrementDriverList()"
+        >
+          Submit
+        </button>
+      </form>
     </div>
-  </ng-container>
-</div>
+    <ng-container *ngIf="(drivers | validDrivers).length > 0">
+      <div class="driver-portal">
+        <driver-cards></driver-cards>
+      </div>
+    </ng-container>
+  </div>
+</ng-container>
