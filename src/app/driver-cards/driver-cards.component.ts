@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { DriverService } from 'src/services/driver.service';
-import { Driver } from '../models/driver';
 
 @Component({
   selector: 'driver-cards',
@@ -8,14 +7,10 @@ import { Driver } from '../models/driver';
   styleUrls: ['./driver-cards.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DriverCardsComponent {
-  drivers: Array<Driver> = this.driverService.drivers;
+export class DriverCardsComponent  {
+  drivers$ = this.driverService.drivers$;
 
   constructor(
     private readonly driverService: DriverService,
   ) {}
-
-  getTimeRemainingForDriver(driver: Driver): number {
-    return this.driverService.gettimeRemainingInMinutesForDriver(driver);
-  }
 }

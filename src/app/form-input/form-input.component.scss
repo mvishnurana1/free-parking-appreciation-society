@@ -1,7 +1,6 @@
 .form-driver-cards-container {
   display: flex;
   justify-content: space-around;
-  align-items: baseline;
 }
 
 .form-fields {
@@ -28,12 +27,4 @@
 .time-selector {
   display: flex;
   justify-content: space-between;
-}
-
-@media only screen and (max-width: 1024px) {
-  .time-selector {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
 }

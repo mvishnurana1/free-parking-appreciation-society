@@ -3,5 +3,4 @@ export class Driver {
   timeParked: Date;
   carParkType: string;
   location?: string;
-  minutesRemaining?: number;
 }

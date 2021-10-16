@@ -1,21 +1,21 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Driver } from 'src/app/models/driver';
 import { DateService } from './date.service';
 import { addHours } from 'date-fns';
-import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DriverService {
   private drivers: BehaviorSubject<Array<Driver>> = new BehaviorSubject<Array<Driver>>([]);
-  drivers$ = this.drivers.asObservable();
+  drivers$: Observable<Driver[]> = this.drivers.asObservable();
 
   constructor(
     private readonly dateService: DateService,
   ) { }
 
-  gettimeRemainingInMinutesForDriver(driver: Driver): number {
+  getTimeRemainingInMinutesForDriver(driver: Driver): number {
     const carParkType = Number(driver.carParkType[0]);
     const parkedTill = addHours(driver.timeParked, carParkType);
 
@@ -23,6 +23,8 @@ export class DriverService {
   }
 
   addDriver(driver: Driver):  void {
-    this.drivers.next(this.drivers.getValue().concat([driver]));
+    const current = this.drivers.value;
+    current.push(driver);
+    this.drivers.next(current);
   }
 }

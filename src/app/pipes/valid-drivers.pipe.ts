@@ -14,7 +14,7 @@ export class ValidDriversPipe implements PipeTransform {
     let newArray: Array<Driver> = [];
 
     data.filter((driver) => {
-      if (this.driverService.gettimeRemainingInMinutesForDriver(driver) > 0) {
+      if (this.driverService.getTimeRemainingInMinutesForDriver(driver) > 0) {
         newArray = [...newArray, driver];
       }
     });
