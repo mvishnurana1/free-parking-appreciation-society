@@ -52,5 +52,6 @@ export class FormInputComponent implements OnInit {
   }
 
   clearForm(): void {
+    this.driverForm.reset();
   }
 }

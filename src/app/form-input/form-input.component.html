@@ -43,8 +43,10 @@
         </button>
       </form>
     </div>
-    <div class="driver-portal">
-      <driver-cards></driver-cards>
-    </div>
+    <ng-container *ngIf="drivers.length > 0">
+      <div class="driver-portal">
+        <driver-cards></driver-cards>
+      </div>
+    </ng-container>
   </div>
 </ng-container>
