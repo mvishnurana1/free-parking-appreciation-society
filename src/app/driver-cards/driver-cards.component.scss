@@ -3,6 +3,19 @@
   background-color: rgb(88, 168, 50);
   color: white;
   margin: 1rem;
+  animation: slidein 3s;
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 100%;
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
 }
 
 .card-flex {
