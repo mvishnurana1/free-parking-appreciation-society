@@ -23,11 +23,8 @@ export class DateService {
 
     const hourSegment = Number(newArray[0]);
     const minuteSegment = newArray[1];
-
     const timeSplit = minuteSegment.split(" ");
-
     const today = new Date();
-
     let numberHour: number;
 
     if (timeSplit[1] === 'PM' && (hourSegment >= 1 && hourSegment <= 11)) {
@@ -37,7 +34,6 @@ export class DateService {
     }
 
     const dateTimeParked = new Date(today.getFullYear(), today.getMonth(), today.getDate(), numberHour, Number(timeSplit[0]));
-
     return dateTimeParked;
   }
 }

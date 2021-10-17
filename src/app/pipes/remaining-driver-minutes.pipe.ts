@@ -14,10 +14,8 @@ export class RemainingDriverMinutesPipe implements PipeTransform {
   transform(driver: Driver): number {
       const carParkType = Number(driver.carParkType[0]);
       const parkedAtDateTime = this.dateService.dateParse(driver.timeParked.toString());
-
       const parkedTill = addHours(parkedAtDateTime, carParkType);
 
-      console.log(parkedTill);
       return this.dateService.timeDifferenceInMinutes(parkedTill, new Date(Date.now()));
   }
 }
