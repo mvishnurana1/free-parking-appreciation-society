@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { addHours, parse } from 'date-fns';
+import { addHours } from 'date-fns';
 import { DateService } from 'src/services/date.service';
 import { Driver } from '../models/driver';
 
@@ -13,11 +13,9 @@ export class RemainingDriverMinutesPipe implements PipeTransform {
 
   transform(driver: Driver): number {
       const carParkType = Number(driver.carParkType[0]);
+      const parkedAtDateTime = this.dateService.dateParse(driver.timeParked.toString());
+      const parkedTill = addHours(parkedAtDateTime, carParkType);
 
-      const parsedDate = parse(driver.timeParked.toString(), 'd', new Date());
-
-      const parkedTill = addHours(driver.timeParked, carParkType);
       return this.dateService.timeDifferenceInMinutes(parkedTill, new Date(Date.now()));
   }
-
 }
