@@ -2,8 +2,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "types": [
-      "jest",
-      "node",
+      "jest"
     ],
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
