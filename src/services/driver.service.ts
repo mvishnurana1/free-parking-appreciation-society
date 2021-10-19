@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Driver } from 'src/app/models/driver';
-import { DateService } from './date.service';
+import { DateService } from './date/date.service';
 import { addHours } from 'date-fns';
 
 @Injectable({

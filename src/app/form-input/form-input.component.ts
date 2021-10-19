@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { tap } from 'rxjs/operators';
 import { subHours } from 'date-fns';
 import { Driver } from '../models/driver';
-import { DateService } from 'src/services/date.service';
+import { DateService } from 'src/services/date/date.service';
 import { DriverService } from 'src/services/driver.service';
 
 @Component({

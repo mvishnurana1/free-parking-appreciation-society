@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { addHours } from 'date-fns';
-import { DateService } from 'src/services/date.service';
+import { DateService } from 'src/services/date/date.service';
 import { Driver } from '../models/driver';
 
 @Pipe({
