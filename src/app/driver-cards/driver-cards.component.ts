@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { DriverService } from 'src/services/driver.service';
+import { DriverService } from 'src/services/driver/driver.service';
 
 @Component({
   selector: 'driver-cards',

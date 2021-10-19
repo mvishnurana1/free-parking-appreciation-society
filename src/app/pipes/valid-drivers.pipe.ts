@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { DriverService } from 'src/services/driver.service';
+import { DriverService } from 'src/services/driver/driver.service';
 import { Driver } from '../models/driver';
 
 @Pipe({

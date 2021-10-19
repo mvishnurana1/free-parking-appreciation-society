@@ -13,7 +13,7 @@ import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { DatePipe } from '@angular/common';
-import { DriverService } from 'src/services/driver.service';
+import { DriverService } from 'src/services/driver/driver.service';
 import { DateService } from 'src/services/date/date.service';
 import { ValidDriversPipe } from './pipes/valid-drivers.pipe';
 import { RemainingDriverMinutesPipe } from './pipes/remaining-driver-minutes.pipe';

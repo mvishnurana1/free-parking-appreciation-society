@@ -4,7 +4,7 @@ import { tap } from 'rxjs/operators';
 import { subHours } from 'date-fns';
 import { Driver } from '../models/driver';
 import { DateService } from 'src/services/date/date.service';
-import { DriverService } from 'src/services/driver.service';
+import { DriverService } from 'src/services/driver/driver.service';
 
 @Component({
   selector: 'form-input',
