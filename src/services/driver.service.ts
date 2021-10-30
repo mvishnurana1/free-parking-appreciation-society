@@ -8,7 +8,7 @@ import { addHours } from 'date-fns';
   providedIn: 'root'
 })
 export class DriverService {
-  private drivers: BehaviorSubject<Array<Driver>> = new BehaviorSubject<Array<Driver>>([]);
+  private drivers: BehaviorSubject<Array<Driver>> = new BehaviorSubject<Array<Driver>>(JSON.parse(localStorage.getItem('drivers')));
   drivers$: Observable<Driver[]> = this.drivers.asObservable();
 
   constructor(
@@ -25,6 +25,7 @@ export class DriverService {
   addDriver(driver: Driver):  void {
     const current = this.drivers.value;
     current.push(driver);
+    localStorage.setItem('drivers', JSON.stringify(this.drivers.value));
     this.drivers.next(current);
   }
 }
