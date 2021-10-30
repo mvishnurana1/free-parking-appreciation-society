@@ -1,22 +1,26 @@
 <ng-container *ngIf="drivers$ | async as drivers">
-  <mat-card *ngFor="let driver of drivers" class="card">
-    <ng-container *ngIf="drivers.length > 0">
-      <div class="card-flex">
-        <h1 class="driver-name">{{ driver.firstName }}</h1>
-        <h1 class="car-park-type">{{ driver.carParkType }}</h1>
-      </div>
-      <mat-card-content>
+  <ng-container *ngIf="drivers.length > 0">
+    <ng-container *ngFor="let driver of drivers" >
+    <ng-container *ngIf="(driver | remainingDriverMinutes) > 0">
+      <mat-card [ngClass]="{'red': (driver | remainingDriverMinutes) <= 30  }" class="card">
         <div class="card-flex">
-          <p class="address">{{ driver?.location }}</p>
-          <i class="small">
-            {{ driver.timeParked }}
-          </i>
+          <h1 class="driver-name">{{ driver.firstName }}</h1>
+          <h1 class="car-park-type">{{ driver.carParkType }}</h1>
         </div>
-        <div class="small">
-          Time left:
-          {{ driver | remainingDriverMinutes }} mins
-        </div>
-      </mat-card-content>
+        <mat-card-content>
+          <div class="card-flex">
+            <p class="address">{{ driver?.location }}</p>
+            <i class="small">
+              {{ driver.timeParked }}
+            </i>
+          </div>
+          <div class="small">
+            Time left:
+            {{ driver | remainingDriverMinutes }} mins
+          </div>
+        </mat-card-content>
+      </mat-card>
     </ng-container>
-  </mat-card>
+    </ng-container>
+    </ng-container>
 </ng-container>

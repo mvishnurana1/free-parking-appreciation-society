@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { tap } from 'rxjs/operators';
 import { DriverService } from 'src/services/driver.service';
+import { LocalStorageService } from 'src/services/local-storage.service';
 
 @Component({
   selector: 'driver-cards',
@@ -8,9 +10,16 @@ import { DriverService } from 'src/services/driver.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DriverCardsComponent  {
-  drivers$ = this.driverService.drivers$;
+  drivers$ = this.driverService.drivers$
+    .pipe(
+      tap(() => {
+        this.localStorageService.CleanseDriverStorage();
+      })
+    );
+
 
   constructor(
     private readonly driverService: DriverService,
+    private readonly localStorageService: LocalStorageService,
   ) {}
 }

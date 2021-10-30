@@ -7,5 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'free-parking-appreciation-society-app';
-  drivers = [];
 }
